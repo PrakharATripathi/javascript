@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Checker</title>
+</head>
+<body>
+    <h1>Date Checker</h1>
+    <form id="dateForm">
+        <label for="dateInput">Enter a date:</label>
+        <input type="date" id="dateInput">
+        <input type="submit" value="Check Date">
+    </form>
+
+    <script>
+        // let form = document.getElementById("dateForm");
+        // form.addEventListener("submit", function(event) {
+        //     event.preventDefault();
+        //     let inputDate = document.getElementById("dateInput").value;
+        //     checkDate(inputDate);
+        // });
+
+        // function checkDate(inputDate) {
+        //     let today = new Date();
+        //     let date = new Date(inputDate);
+        //     if (date < today) {
+        //         alert("The input date is less than today's date.");
+        //     } else if (date > today) {
+        //         alert("The input date is greater than today's date. Submit successfully.");
+        //     } else {
+        //         alert("The input date is equal to today's date.");
+        //     }
+        // }
+
+        formSubmitBtn.addEventListener("click", () => {
+  // add by days validation
+  let newDate = new Date(manufacturDate.value);
+  newDate.setDate(newDate.getDate() + Number(manufactdays.value));
+  let localDate = newDate.toLocaleDateString();
+  if (localDate == "Invalid Date") {
+    localDate = byDateInput.value;
+  }
+
+  // form validation
+  let valueofMedicine = medicineInput.value.replaceAll(" ", "");
+  if (
+    valueofMedicine === "" ||
+    quantityTnput.value === "" ||
+    quantityTnput.value < 0 ||
+    rackInput.value === "" ||
+    betchNum.value === "" ||
+    localDate == ""
+  ) {
+    if (valueofMedicine === "") {
+      notification.innerText = "invalid medicine...!";
+      medicineInput.value = "";
+    } else if (rackInput.value === "") {
+      notification.innerText = "invalid Rack input ....!";
+      rackInput.value = "";
+    } else if (betchNum.value === "") {
+      notification.innerText = "invalid Betch Num ....|";
+    } else if (quantityTnput.value === "") {
+      notification.innerText = "invalid quntity ....!";
+      quantityTnput.value = "";
+    } else if (quantityTnput.value < 0) {
+      notification.innerText = "invalid quntity not allow less than 0";
+      quantityTnput.value = "";
+    } else if (localDate === "") {
+      notification.innerText = "invalid Expaie Date ...!";
+    }
+    notification.style.background = "red";
+    notification.classList.add("show");
+    setTimeout(function () {
+      notification.classList.remove("show");
+    }, 3000);
+  } else {
+    // add table th value
+    document.getElementById("tbody").innerHTML += `
+    <tr>
+      <td>${medicineInput.value}</td>
+      <td>${quantityTnput.value}</td>
+      <td>${localDate}</td>
+      <td>${rackInput.value}</td>
+      <td>${betchNum.value}</td>
+      <td> <button class="delet">remove</button>
+     <button class="edit">Edit</button></td>
+  </tr>
+      `;
+
+    //   medicine validation
+    validArray.push(medicineInput.value);
+    console.log(validArray);
+
+    // show notification
+    notification.innerText = "Form submitted successfully!";
+    notification.classList.add("show");
+    notification.style.background = "#4CAF50";
+
+    // Hide the notification after 3 seconds
+    setTimeout(function () {
+      notification.classList.remove("show");
+    }, 3000);
+    form.style.display = "none";
+  }
+  
+  let deletButtons = document.querySelectorAll(".delet");
+  deletButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      let tr = button.parentNode.parentNode;
+      tr.remove();
+    });
+  });
+
+ 
+});
+
+    </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="date" id="dateInput" />
+
+<script>
+    const dateInput = document.getElementById('dateInput');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+    dateInput.setAttribute('max', today);
+</script>
+
+</body>
+<script>
+    function showForm() {
+    // Get the form element
+    var form = document.getElementById("myForm");
+
+    // Set the form's display style to "block" to make it visible
+    form.style.display = "block";
+
+    // Position the form in the middle of the screen
+    form.style.top = "50%";
+    form.style.left = "50%";
+    form.style.transform = "translate(-50%, -50%)";
+}
+
+// Add an event listener to the button
+document.getElementById("myButton").addEventListener("click", showForm);
+
+
+
+
+
+
+// function displayDropdownSelection(dropdownId, inputId) {
+//     // Get the selected value from the dropdown
+//     var dropdown = document.getElementById(dropdownId);
+//     var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+
+//     // Set the value of the input field
+//     var input = document.getElementById(inputId);
+//     input.value = selectedValue;
+// }
+
+// function inputDates() {
+//     let today = new Date();
+//     let tomorrow = new Date(today);
+//     tomorrow.setDate(tomorrow.getDate() + 1);
+
+//     let todayString = today.toISOString().split('T')[0];
+//     let tomorrowString = tomorrow.toISOString().split('T')[0];
+
+//     let todayInput = prompt("Please enter today's date (YYYY-MM-DD):", todayString);
+//     let tomorrowInput = prompt("Please enter tomorrow's date (YYYY-MM-DD):", tomorrowString);
+
+//     console.log(`Today: ${todayInput}`);
+//     console.log(`Tomorrow: ${tomorrowInput}`);
+
+
+
+
+</script>
+</html> -->
+<!-- <input type="text" id="inputValue" />
+<button onclick="pushValue()">Push Value</button>
+
+<script>
+    let arr = [];
+    function pushValue() {
+        const inputValue = document.getElementById('inputValue').value;
+        arr.push(inputValue);
+        console.log(arr);
+    }
+</script> -->
+

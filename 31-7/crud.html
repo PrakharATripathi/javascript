@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CRUD App</title>
+    <style>
+        body {
+            font-family: cursive;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            height: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            /* height: 20px; */
+        }
+
+        #app {
+
+            display: flex;
+        }
+
+        #delet {
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        #edit {
+            background-color: green;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        #btn {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <form id="create-form" action="# ">
+            <h1>CRUD</h1>
+            Name:<input type="text" name="name" placeholder="Name" id="text"> <br> <br>
+            Email:<input type="email" name="email" placeholder="Email" id="email"> <br> <br>
+            Password:<input type="password" name="pass" placeholder="password" id="pass"> <br> <br>
+            <button type="submit">Create</button> <br> <br>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+    </div>
+    <script src="crud.js"></script>
+</body>
+
+</html>
