@@ -1,0 +1,43 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    height: 20px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: blueviolet;
+    padding: 100px;
+    font-size: 50px;
+    text-align: center;
+    position: absolute;
+    overflow: hidden;
+  
+
+    animation-name: bounceDiv;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+
+}
+
+@keyframes bounceDiv {
+    from{
+        background-color: red;
+        width: 50px;
+        top: 10px;
+    }
+    to{
+        background-color: blueviolet;
+        width: 5px;
+        top: 100px;
+
+
+    }
+}
